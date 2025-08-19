@@ -1,15 +1,23 @@
-import { PrismaClient } from '@prisma/client';
 import { DBAdapter } from '../db';
 
-export function createPrismaAdapter(prisma: PrismaClient): DBAdapter {
+export function createPrismaAdapter(prisma: any): DBAdapter {
     return {
-      async unique(table, column, value) {
-        const result = await (prisma as any)[table].findFirst({ where: { [column]: value } });
-        return !result;
-      },
-      async exists(table, column, value) {
-        const result = await (prisma as any)[table].findFirst({ where: { [column]: value } });
-        return !!result;
-      },
+        async unique(table, column, value) {
+            const model = (prisma as any)[table];
+            if (!model || typeof model.findFirst !== 'function') {
+                throw new Error(`Prisma model '${table}' not found`);
+            }
+            const result = await model.findFirst({ where: { [column]: value } });
+            return !result;
+        },
+        async exists(table, column, value) {
+            const model = (prisma as any)[table];
+            if (!model || typeof model.findFirst !== 'function') {
+                throw new Error(`Prisma model '${table}' not found`);
+            }
+            const result = await model.findFirst({ where: { [column]: value } });
+            return !!result;
+        },
     };
 }
+

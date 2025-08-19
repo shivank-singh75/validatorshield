@@ -1,7 +1,7 @@
 {
   "name": "validatorshield",
-  "version": "1.0.0",
-  "description": "Backend validation for Node.js with TypeScript support, featuring rules like required, email, unique, and exists. Works with Prisma and Sequelize.",
+  "version": "2.0.0",
+  "description": "Universal validation (frontend + backend) with TypeScript. Includes common rules and Sequelize-backed async rules (unique, exists).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -14,28 +14,22 @@
   "keywords": [
     "validator",
     "validation",
+    "frontend validation",
     "backend validation",
-    "data validation",
-    "express validator",
-    "nestjs validation",
-    "prisma validator",
-    "sequelize validator",
-    "typescript validator",
-    "form validation",
-    "input validation",
-    "nodejs validation",
-    "secure validation",
-    "exists rule",
-    "unique rule",
-    "validation middleware",
-    "custom validator"
+    "typescript",
+    "sequelize",
+    "unique",
+    "exists",
+    "form",
+    "node",
+    "browser"
   ],
   "devDependencies": {
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@prisma/client": "*",
-    "sequelize": "*"
+    "sequelize": "*",
+    "@prisma/client": "*"
   },
   "author": "Shivank Singh",
   "license": "MIT",

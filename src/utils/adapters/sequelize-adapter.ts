@@ -1,7 +1,6 @@
-import { Sequelize } from 'sequelize';
 import { DBAdapter } from '../db';
 
-export function createSequelizeAdapter(sequelize: Sequelize): DBAdapter {
+export function createSequelizeAdapter(sequelize: any): DBAdapter {
   return {
     async unique(table, column, value) {
       const [results] = await sequelize.query(`SELECT * FROM ${table} WHERE ${column} = ? LIMIT 1`, {
